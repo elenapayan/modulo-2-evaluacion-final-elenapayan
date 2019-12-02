@@ -1,8 +1,11 @@
-@import 'core/settings';
-@import 'core/links';
+* {
+  padding: 0;
+}
 
-body {
-	background: url('../images/logo-adalab-80px.png') center center no-repeat $color-white;
-	margin: 0;
-	height: 100vh;
+.js-list {
+  font-size: 24px;
+  font-weight: bold;
+}
+li {
+  list-style-type: none;
 }
