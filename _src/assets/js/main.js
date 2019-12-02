@@ -3,7 +3,7 @@
 const btn = document.querySelector(".js-btn");
 const input = document.querySelector(".js-input");
 const ulElement = document.querySelector(".js-list");
-let list = [];
+
 
 function getMovies() {
     fetch(`http://api.tvmaze.com/search/shows?q=${input.value}`)
@@ -16,6 +16,7 @@ function getMovies() {
 }
 
 function paintMovies(data) {
+    let list = "";
     for (let i = 0; i < data.length; i++) {
         if (data[i].show.image === null) {
             data[i].show.image = {
