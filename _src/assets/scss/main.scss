@@ -1,11 +1,28 @@
 * {
   padding: 0;
+  box-sizing: border-box;
 }
 
-.js-list {
+.js-right-list {
   font-size: 24px;
   font-weight: bold;
-}
-li {
   list-style-type: none;
+}
+.container {
+  // list-style-type: none;
+  background-color: #fabada;
+  margin-bottom: 20px;
+}
+.title {
+  margin-top: 5px;
+}
+.main {
+  display: flex;
+}
+.left-section {
+  width: 50vw;
+}
+.right-section {
+  width: 50vw;
+  order: 2;
 }

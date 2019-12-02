@@ -2,7 +2,8 @@
 
 const btn = document.querySelector(".js-btn");
 const input = document.querySelector(".js-input");
-const ulElement = document.querySelector(".js-list");
+const ulFavorites = document.querySelector(".js-left-list");
+let favoriteList = [];
 
 
 function getMovies() {
@@ -23,12 +24,13 @@ function paintMovies(data) {
                 medium: "http://via.placeholder.com/210x295"
             }
         };
-        list += '<li>'
+        list += '<li class="container">'
         list += `<img class="js-image" src="${data[i].show.image.medium}" alt="Foto ${data[i].show.name}"/>`
-        list += `<h4>${data[i].show.name}</h4>`
+        list += `<h4 class="title">${data[i].show.name}</h4>`
         list += '</li>'
     }
-    ulElement.innerHTML = list;
+    const ulList = document.querySelector(".js-right-list");
+    ulList.innerHTML = list;
 }
 
 function getResults(event) {
