@@ -28,8 +28,8 @@ function paintMovies(data) {
                 medium: "http://via.placeholder.com/210x295"
             }
         };
-        list += `<li class="list-container js-content" id="${data[i].show.id}">`
-        list += `<img class="js-image" src="${data[i].show.image.medium}" alt="Foto ${data[i].show.name}"/>`
+        list += `<li class="right-list-container js-content" id="${data[i].show.id}">`
+        list += `<img class="js-image image" src="${data[i].show.image.medium}" alt="Foto ${data[i].show.name}"/>`
         list += `<h4 class="title">${data[i].show.name}</h4>`
         list += '</li>'
     }
@@ -42,7 +42,6 @@ function getResults(event) {
 }
 btn.addEventListener("click", getResults);
 
-
 function activateToggle() {
     const content = document.querySelectorAll(".js-content");
     for (let i = 0; i < content.length; i++) {
@@ -52,25 +51,14 @@ function activateToggle() {
 
 function toggleClass(event) {
     event.currentTarget.classList.toggle("change-color");
+    paintFavorites(event);
+}
+
+function paintFavorites(event) {
     let favoriteMovie = event.currentTarget.innerHTML;
     if (!favoriteIdList.includes(event.currentTarget.id)) {
-        ulFavorites.innerHTML += favoriteMovie;
+        ulFavorites.innerHTML += `<li class="left-list-container" data-id="${event.currentTarget.id}">${favoriteMovie}</li>`;
         favoriteIdList.push(event.currentTarget.id);
     }
 }
 
-// function paintFavoriteMovies() {
-//     for (let i = 0; i < favoriteItem.length; i++) {
-// //         list += `<li class="container js-content" id="${data[i].show.id}">`
-//         list += `<img class="js-image" src="${data[i].show.image.medium}" alt="Foto ${data[i].show.name}"/>`
-//         list += `<h4 class="title">${data[i].show.name}</h4>`
-//         list += '</li>'
-//     }
-//     ulFavorites.innerHTML += list;
-
-// }
-// function addFavorites() {
-//     for (let i = 0; i < list.length; i++) {
-//         favoriteList.push(list[i].show.name);
-//     }
-// }
