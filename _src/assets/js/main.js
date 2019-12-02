@@ -2,8 +2,11 @@
 
 const btn = document.querySelector(".js-btn");
 const input = document.querySelector(".js-input");
+const ulList = document.querySelector(".js-right-list");
 const ulFavorites = document.querySelector(".js-left-list");
+let favoriteIdList = [];
 let favoriteList = [];
+let list = "";
 
 
 function getMovies() {
@@ -16,21 +19,20 @@ function getMovies() {
             activateToggle();
         })
 }
-
 function paintMovies(data) {
-    let list = [];
+    list = "";
+    ulList.innerHTML = "";
     for (let i = 0; i < data.length; i++) {
         if (data[i].show.image === null) {
             data[i].show.image = {
                 medium: "http://via.placeholder.com/210x295"
             }
         };
-        list += '<li class="container js-content">'
+        list += `<li class="list-container js-content" id="${data[i].show.id}">`
         list += `<img class="js-image" src="${data[i].show.image.medium}" alt="Foto ${data[i].show.name}"/>`
         list += `<h4 class="title">${data[i].show.name}</h4>`
         list += '</li>'
     }
-    const ulList = document.querySelector(".js-right-list");
     ulList.innerHTML += list;
 }
 
@@ -50,4 +52,25 @@ function activateToggle() {
 
 function toggleClass(event) {
     event.currentTarget.classList.toggle("change-color");
+    let favoriteMovie = event.currentTarget.innerHTML;
+    if (!favoriteIdList.includes(event.currentTarget.id)) {
+        ulFavorites.innerHTML += favoriteMovie;
+        favoriteIdList.push(event.currentTarget.id);
+    }
 }
+
+// function paintFavoriteMovies() {
+//     for (let i = 0; i < favoriteItem.length; i++) {
+// //         list += `<li class="container js-content" id="${data[i].show.id}">`
+//         list += `<img class="js-image" src="${data[i].show.image.medium}" alt="Foto ${data[i].show.name}"/>`
+//         list += `<h4 class="title">${data[i].show.name}</h4>`
+//         list += '</li>'
+//     }
+//     ulFavorites.innerHTML += list;
+
+// }
+// function addFavorites() {
+//     for (let i = 0; i < list.length; i++) {
+//         favoriteList.push(list[i].show.name);
+//     }
+// }

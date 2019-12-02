@@ -3,14 +3,18 @@
   box-sizing: border-box;
 }
 
-.js-right-list {
+.right-list {
   font-size: 24px;
   font-weight: bold;
   list-style-type: none;
 }
-.container {
+.left-list {
+  font-weight: bold;
+}
+.list-container {
   // list-style-type: none;
   background-color: #fabada;
+  color: crimson;
   margin-bottom: 20px;
 }
 .title {
@@ -18,14 +22,16 @@
 }
 .main {
   display: flex;
+  justify-content: space-evenly;
 }
 .left-section {
-  width: 50vw;
+  width: 30vw;
 }
 .right-section {
-  width: 50vw;
+  width: 30vw;
   order: 2;
 }
 .change-color {
-  background-color: red;
+  background-color: crimson;
+  color: #fabada;
 }
