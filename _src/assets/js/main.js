@@ -17,12 +17,16 @@ function getMovies() {
 
 function paintMovies(data) {
     for (let i = 0; i < data.length; i++) {
+        if (data[i].show.image === null) {
+            data[i].show.image = {
+                medium: "http://via.placeholder.com/210x295"
+            }
+        };
         list += '<li>'
-        list += `<img src="${data[i].show.image.medium}" alt="Foto ${data[i].show.name}"/>`
+        list += `<img class="js-image" src="${data[i].show.image.medium}" alt="Foto ${data[i].show.name}"/>`
         list += `<h4>${data[i].show.name}</h4>`
         list += '</li>'
     }
-
     ulElement.innerHTML = list;
 }
 
