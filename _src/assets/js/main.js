@@ -4,6 +4,7 @@ const btn = document.querySelector(".js-btn");
 const input = document.querySelector(".js-input");
 const ulList = document.querySelector(".js-right-list");
 const ulFavorites = document.querySelector(".js-left-list");
+const log = document.querySelector(".js-log")
 let favoriteList = [];
 let data = [];
 let list = "";
@@ -39,6 +40,7 @@ function paintMovies() {
         list += `<li class="js-content right-list-container ${favClass}" id="${data[i].show.id}">`
         list += `<img class="js-image image" src="${data[i].show.image.medium}" alt="Foto ${data[i].show.name}"/>`
         list += `<h4 class="title">${data[i].show.name}</h4>`
+        list += `<p>${data[i].show.status}</p>`
         list += '</li>'
     }
     ulList.innerHTML += list;
@@ -49,6 +51,13 @@ function getResults(event) {
     getMovies();
 }
 btn.addEventListener("click", getResults);
+
+function getLog(event) {
+    for (let i = 0; i < favoriteList.length; i++) {
+        console.log(favoriteList[i].name);
+    }
+}
+log.addEventListener("click", getLog)
 
 function activateToggle() {
     const content = document.querySelectorAll(".js-content");
